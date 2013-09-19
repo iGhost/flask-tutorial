@@ -6,10 +6,31 @@
     {% else %}
     <title>Welcome to microblog</title>
     {% endif %}
+<style type="text/css">
+.loginBlock {
+    width: 700px;
+    box-shadow: 0 5px 10px 0 #000000;
+    border-radius: 5px;
+    padding: 5px;
+}
+.loginBlock input {
+    font-size: 11px;
+}
+</style>
 </head>
 <body>
 <div>Microblog: <a href="/index">Home</a></div>
 <hr>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+    <li>{{ message }} </li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
 {% block content %}{% endblock %}
 </body>
 </html>
